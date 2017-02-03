@@ -73,23 +73,28 @@ function sendStatus(text) {
 //-------------------------------------------------------------------
 // Auto updates
 //-------------------------------------------------------------------
-autoUpdater.on('checking-for-update', (ev) => {
+autoUpdater.on('checking-for-update', () => {
   sendStatus('Checking for update...');
 })
-autoUpdater.on('update-available', (ev) => {
+autoUpdater.on('update-available', (ev, info) => {
   sendStatus('Update available.');
+  log.info('info', info);
 })
-autoUpdater.on('update-not-available', (ev) => {
+autoUpdater.on('update-not-available', (ev, info) => {
   sendStatus('Update not available.');
+  log.info('info', info);
 })
-autoUpdater.on('error', (ev) => {
+autoUpdater.on('error', (ev, err) => {
   sendStatus('Error in auto-updater.');
+  log.info('err', err);
 })
-autoUpdater.on('download-progress', (ev) => {
+autoUpdater.on('download-progress', (ev, progressObj) => {
   sendStatus('Download progress...');
+  log.info('progressObj', progressObj);
 })
-autoUpdater.on('update-downloaded', (ev, releaseNotes, releaseName, releaseDate, updateURL) => {
+autoUpdater.on('update-downloaded', (ev, info) => {
   sendStatus('Update downloaded.  Will quit and install in 5 seconds.');
+  log.info('info', info);
   // Wait 5 seconds, then quit and install
   setTimeout(function() {
     autoUpdater.quitAndInstall();  
