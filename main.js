@@ -1,7 +1,7 @@
 // Copyright (c) The LHTML team
 // See LICENSE for details.
 
-const {app, BrowserWindow, Menu, protocol} = require('electron');
+const {app, BrowserWindow, Menu, protocol, ipcMain} = require('electron');
 const log = require('electron-log');
 const {autoUpdater} = require("electron-updater");
 
@@ -45,6 +45,7 @@ if (process.platform === 'darwin') {
 let win;
 function createDefaultWindow() {
   win = new BrowserWindow();
+  win.webContents.openDevTools();
   win.on('closed', () => {
     win = null;
   });
@@ -61,45 +62,40 @@ app.on('ready', function() {
 });
 
 app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  app.quit();
 });
 
-app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createDefaultWindow();
-  }
-});
-
+function sendStatus(text) {
+  log.info(text);
+  win.webContents.send('message', text);
+}
 
 //-------------------------------------------------------------------
 // Auto updates
 //-------------------------------------------------------------------
 autoUpdater.on('checking-for-update', (ev) => {
-  console.log('Checking for update...');
+  sendStatus('Checking for update...');
 })
 autoUpdater.on('update-available', (ev) => {
-  console.log('Update available.');
+  sendStatus('Update available.');
 })
 autoUpdater.on('update-not-available', (ev) => {
-  console.log('Update not available.');
+  sendStatus('Update not available.');
 })
 autoUpdater.on('error', (ev) => {
-  console.log('Error in auto-updater.');
+  sendStatus('Error in auto-updater.');
 })
 autoUpdater.on('download-progress', (ev) => {
-  console.log('Download progress...');
+  sendStatus('Download progress...');
 })
 autoUpdater.on('update-downloaded', (ev, releaseNotes, releaseName, releaseDate, updateURL) => {
-  console.log('Update downloaded.  Will quit and install in 5 seconds.');
+  sendStatus('Update downloaded.  Will quit and install in 5 seconds.');
   // Wait 5 seconds, then quit and install
   setTimeout(function() {
     autoUpdater.quitAndInstall();  
   }, 5000)
 })
-autoUpdater.checkForUpdates()
+// Wait a second for the window to exist before checking for updates.
+setTimeout(function() {
+  autoUpdater.checkForUpdates()  
+}, 1000);
