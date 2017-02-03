@@ -12,10 +12,12 @@ This repo contains the bare minimum code to have an auto-updating Electron app u
 
         ./publish.sh
 
-4. Download and install the app from <https://github.com/iffy/electron-updater-example/releases>.
+4. Release the release on GitHub by going to <https://github.com/iffy/electron-updater-example/releases>, editing the release and clicking "Publish release."
 
-5. Update the version in `package.json`
+5. Download and install the app from <https://github.com/iffy/electron-updater-example/releases>.
 
-6. Publish again.
+6. Update the version in `package.json`
 
-7. Open the installed version of the app and see that it updates itself.
+7. Do steps 3 and 4 again.
+
+8. Open the installed version of the app and see that it updates itself.
