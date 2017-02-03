@@ -4,7 +4,7 @@
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "Matt Haggard",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^1.4.15",
     "electron-builder": "^12.3.1"
   },
