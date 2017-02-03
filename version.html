@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Electron Updater Example</title>
+</head>
+<body>
+  Current version: <span id="version">vX.Y.Z</span>
+<script>
+let version = window.location.hash.substring(1);
+document.getElementById('version').innerText = version;
+</script>
+</body>
+</html>
