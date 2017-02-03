@@ -2,7 +2,18 @@
 // See LICENSE for details.
 
 const {app, BrowserWindow, Menu, protocol} = require('electron');
-var electron = require('electron');
+const log = require('electron-log');
+const {autoUpdater} = require("electron-updater");
+
+//-------------------------------------------------------------------
+// Logging
+//
+// This logging setup is not required for auto-updates to work,
+// but it sure makes debugging easier :)
+//-------------------------------------------------------------------
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+log.info('App starting...');
 
 //-------------------------------------------------------------------
 // Define the menu
@@ -69,10 +80,6 @@ app.on('activate', () => {
 //-------------------------------------------------------------------
 // Auto updates
 //-------------------------------------------------------------------
-var {autoUpdater} = require("electron-updater");
-let UPDATE_DOWNLOADED = false;
-let update_window;
-
 autoUpdater.on('checking-for-update', (ev) => {
   console.log('Checking for update...');
 })

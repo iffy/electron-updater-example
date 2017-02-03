@@ -6,4 +6,5 @@ if [ -z "$GH_TOKEN" ]; then
     exit 1
 fi
 
+# This will build, package and upload the app to GitHub.
 build --win --mac -p always
