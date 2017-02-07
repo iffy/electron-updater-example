@@ -1,3 +1,5 @@
+**NOTE:** This isn't complete because you have to sign your code to get auto-updating to work, and signing your code on macOS costs money.
+
 This repo contains the bare minimum code to have an auto-updating Electron app using [`electron-updater`](https://github.com/electron-userland/electron-builder/tree/master/packages/electron-updater) with releases stored on GitHub.
 
 **NOTE:** If you want to run through this whole process, you will need to fork this repo on GitHub and replace all instances of `iffy` with your GitHub username before doing the following steps.
