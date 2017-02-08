@@ -7,4 +7,6 @@ if [ -z "$GH_TOKEN" ]; then
 fi
 
 # This will build, package and upload the app to GitHub.
-node_modules/.bin/build --win --mac -p always
+CSC_LINK="$(pwd)/certs/ia.p12" \
+CSC_IDENTITY_AUTO_DISCOVERY=false \
+    node_modules/.bin/build --win --mac -p always
