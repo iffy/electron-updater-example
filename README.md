@@ -24,7 +24,7 @@ This repo contains the **bare minimum code** to have an auto-updating Electron a
 
 6. Download and install the app from <https://github.com/iffy/electron-updater-example/releases>.
 
-7. Update the version in `package.json`
+7. Update the version in `package.json`, commit and push to GitHub.
 
 8. Do steps 4 and 5 again.
 
