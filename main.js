@@ -8,6 +8,8 @@ const {autoUpdater} = require("electron-updater");
 //-------------------------------------------------------------------
 // Logging
 //
+// THIS SECTION IS NOT REQUIRED
+//
 // This logging setup is not required for auto-updates to work,
 // but it sure makes debugging easier :)
 //-------------------------------------------------------------------
@@ -17,6 +19,8 @@ log.info('App starting...');
 
 //-------------------------------------------------------------------
 // Define the menu
+//
+// THIS SECTION IS NOT REQUIRED
 //-------------------------------------------------------------------
 let template = []
 if (process.platform === 'darwin') {
@@ -41,6 +45,12 @@ if (process.platform === 'darwin') {
 
 //-------------------------------------------------------------------
 // Open a window that displays the version
+//
+// THIS SECTION IS NOT REQUIRED
+//
+// This isn't required for auto-updates to work, but it's easier
+// for the app to show a window than to have to click "About" to see
+// that updates are working.
 //-------------------------------------------------------------------
 let win;
 function createDefaultWindow() {
