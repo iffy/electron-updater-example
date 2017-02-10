@@ -82,6 +82,9 @@ function sendStatus(text) {
 
 //-------------------------------------------------------------------
 // Auto updates
+//
+// For details about these events, see the Wiki:
+// https://github.com/electron-userland/electron-builder/wiki/Auto-Update#events
 //-------------------------------------------------------------------
 autoUpdater.on('checking-for-update', () => {
   sendStatus('Checking for update...');
