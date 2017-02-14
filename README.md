@@ -22,8 +22,12 @@ This repo contains the **bare minimum code** to have an auto-updating Electron a
             }
         }
 
-3. First, install necessary dependencies with:
+3. Install necessary dependencies with:
 
+        yarn
+   
+   or
+   
         npm install
 
 4. Generate a GitHub access token by going to <https://github.com/settings/tokens/new>.  The access token should have the `repo` scope/permission.  Once you have the token, assign it to an environment variable (on macOS/linux):
