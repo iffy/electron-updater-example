@@ -79,7 +79,7 @@ autoUpdater.on('update-not-available', (ev, info) => {
 autoUpdater.on('error', (ev, err) => {
   sendStatusToWindow('Error in auto-updater.');
 })
-autoUpdater.on('download-progress', (ev, progressObj) => {
+autoUpdater.on('download-progress', (progressObj) => {
   sendStatusToWindow('Download progress...');
 })
 autoUpdater.on('update-downloaded', (ev, info) => {
