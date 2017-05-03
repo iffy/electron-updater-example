@@ -80,7 +80,10 @@ autoUpdater.on('error', (ev, err) => {
   sendStatusToWindow('Error in auto-updater.');
 })
 autoUpdater.on('download-progress', (progressObj) => {
-  sendStatusToWindow('Download progress...');
+  let log_message = "Download speed: " + fixMeasureUnit(progressObj.bytesPerSecond, 'speed', 0);
+  log_message = log_message + ' - Downloaded ' + fixMeasureUnit(progressObj.percent, 'percentage', 0) + '%';
+  log_message = log_message + ' (' + fixMeasureUnit(progressObj.transferred, 'size', 1) + "/" + fixMeasureUnit(progressObj.total, 'size', 1) + ')';
+  sendStatusToWindow(log_message);
 })
 autoUpdater.on('update-downloaded', (ev, info) => {
   sendStatusToWindow('Update downloaded; will install in 5 seconds');
@@ -129,3 +132,38 @@ autoUpdater.on('update-downloaded', (ev, info) => {
 app.on('ready', function()  {
   autoUpdater.checkForUpdates();
 });
+
+function fixMeasureUnit(value, type, precision) {
+  let ret, unit;
+  if (type === 'speed') {
+    unit = 'bytes/s';
+  } else if (type === 'size') {
+    unit = 'bytes';
+  } else if (type === 'percentage') {
+    ret = value;
+    unit = '';
+  }
+  if (value > 1024) {
+    ret = value / 1024; //Kb
+    if (type === 'speed') {
+      unit = 'Kbps';
+    } else if (type === 'size') {
+      unit = 'Kb';
+    }
+    if (ret > 1024) {
+      ret = ret / 1024; //Mb
+      if (type === 'speed') {
+        unit = 'Mbps';
+      } else if (type === 'size') {
+        unit = 'Mb';
+      }
+    }
+  }
+  ret = ret.toFixed(precision);
+  if (type != 'percentage') {
+    ret = ret + ' ' + unit;
+  } else {
+    ret = ret + unit;
+  }
+  return ret;
+}
