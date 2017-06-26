@@ -1,7 +1,7 @@
 {
   "name": "electron-updater-example",
   "productName": "Electron Test 01",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
