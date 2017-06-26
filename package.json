@@ -1,9 +1,17 @@
 {
   "name": "electron-updater-example",
-  "version": "0.4.1",
+  "productName": "Electron Test 01",
+  "version": "0.4.3",
   "main": "main.js",
-  "description": "electron-updater example project",
-  "author": "Matt Haggard",
+  "scripts": {
+    "start": "electron main.js",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "description": "JMH fork of the electron-updater example project",
+  "author": "John M. Horan",
+  "license": "Apache-2.0",
+  "homepage": "",
   "devDependencies": {
     "electron": "^1.4.15",
     "electron-builder": "^12.3.1"
@@ -13,16 +21,30 @@
     "electron-updater": "^1.4.2"
   },
   "build": {
-    "appId": "com.github.iffy.electronupdaterexample",
-    "mac": {
-      "category": "your.app.category.type",
+    "productName": "Electron Test 02",
+    "appId": "com.github.johnmhoran.electronupdaterexample",
+    "copyright": "©2017 John M. Horan",
+    "win": {
       "target": [
-        "zip",
-        "dmg"
+        "nsis",
+        "7z",
+        "zip"
       ]
     },
     "nsis": {
-      "perMachine": true
-    }
+      "oneClick": true,
+      "perMachine": false
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "johnmhoran",
+        "repo": "electron-updater-example"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnmhoran/electron-updater-example.git"
   }
 }

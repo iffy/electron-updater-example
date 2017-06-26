@@ -1,0 +1,6 @@
+version: '{build}'
+image: Visual Studio 2017
+environment:
+  GH_TOKEN:
+    secure: fgllqBAcd8tiImqXIu40KEL9WCq8nmyjYMroWnDcTwfn1nRnizoHdyC0gucjYnNm
+build: off
