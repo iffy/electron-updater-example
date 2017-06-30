@@ -70,13 +70,13 @@ function createDefaultWindow() {
 autoUpdater.on('checking-for-update', () => {
   sendStatusToWindow('Checking for update...');
 })
-autoUpdater.on('update-available', (ev, info) => {
+autoUpdater.on('update-available', (info) => {
   sendStatusToWindow('Update available.');
 })
-autoUpdater.on('update-not-available', (ev, info) => {
+autoUpdater.on('update-not-available', (info) => {
   sendStatusToWindow('Update not available.');
 })
-autoUpdater.on('error', (ev, err) => {
+autoUpdater.on('error', (err) => {
   sendStatusToWindow('Error in auto-updater.');
 })
 autoUpdater.on('download-progress', (progressObj) => {
@@ -85,7 +85,7 @@ autoUpdater.on('download-progress', (progressObj) => {
   log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
   sendStatusToWindow(log_message);
 })
-autoUpdater.on('update-downloaded', (ev, info) => {
+autoUpdater.on('update-downloaded', (info) => {
   sendStatusToWindow('Update downloaded; will install in 5 seconds');
 });
 app.on('ready', function() {
@@ -112,15 +112,15 @@ app.on('window-all-closed', () => {
 //-------------------------------------------------------------------
 // autoUpdater.on('checking-for-update', () => {
 // })
-// autoUpdater.on('update-available', (ev, info) => {
+// autoUpdater.on('update-available', (info) => {
 // })
-// autoUpdater.on('update-not-available', (ev, info) => {
+// autoUpdater.on('update-not-available', (info) => {
 // })
-// autoUpdater.on('error', (ev, err) => {
+// autoUpdater.on('error', (err) => {
 // })
-// autoUpdater.on('download-progress', (ev, progressObj) => {
+// autoUpdater.on('download-progress', (progressObj) => {
 // })
-autoUpdater.on('update-downloaded', (ev, info) => {
+autoUpdater.on('update-downloaded', (info) => {
   // Wait 5 seconds, then quit and install
   // In your application, you don't need to wait 5 seconds.
   // You could call autoUpdater.quitAndInstall(); immediately
