@@ -1,5 +1,5 @@
-// Copyright (c) The LHTML team
-// See LICENSE for details.
+// This is free and unencumbered software released into the public domain.
+// See LICENSE for details
 
 const {app, BrowserWindow, Menu, protocol, ipcMain} = require('electron');
 const log = require('electron-log');
