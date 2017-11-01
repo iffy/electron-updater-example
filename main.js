@@ -77,7 +77,7 @@ autoUpdater.on('update-not-available', (info) => {
   sendStatusToWindow('Update not available.');
 })
 autoUpdater.on('error', (err) => {
-  sendStatusToWindow('Error in auto-updater.');
+  sendStatusToWindow('Error in auto-updater. ' + err);
 })
 autoUpdater.on('download-progress', (progressObj) => {
   let log_message = "Download speed: " + progressObj.bytesPerSecond;
@@ -86,7 +86,7 @@ autoUpdater.on('download-progress', (progressObj) => {
   sendStatusToWindow(log_message);
 })
 autoUpdater.on('update-downloaded', (info) => {
-  sendStatusToWindow('Update downloaded; will install in 5 seconds');
+  sendStatusToWindow('Update downloaded');
 });
 app.on('ready', function() {
   // Create the Menu
@@ -99,8 +99,22 @@ app.on('window-all-closed', () => {
   app.quit();
 });
 
+//
+// CHOOSE one of the following options for Auto updates
+//
+
 //-------------------------------------------------------------------
-// Auto updates
+// Auto updates - Option 1 - Simplest version
+//
+// This will immediately download an update, then install when the
+// app quits.
+//-------------------------------------------------------------------
+app.on('ready', function()  {
+  autoUpdater.checkForUpdatesAndNotify();
+});
+
+//-------------------------------------------------------------------
+// Auto updates - Option 2 - More control
 //
 // For details about these events, see the Wiki:
 // https://github.com/electron-userland/electron-builder/wiki/Auto-Update#events
@@ -110,6 +124,9 @@ app.on('window-all-closed', () => {
 // Uncomment any of the below events to listen for them.  Also,
 // look in the previous section to see them being used.
 //-------------------------------------------------------------------
+// app.on('ready', function()  {
+//   autoUpdater.checkForUpdates();
+// });
 // autoUpdater.on('checking-for-update', () => {
 // })
 // autoUpdater.on('update-available', (info) => {
@@ -120,20 +137,6 @@ app.on('window-all-closed', () => {
 // })
 // autoUpdater.on('download-progress', (progressObj) => {
 // })
-autoUpdater.on('update-downloaded', (info) => {
-  // Wait 5 seconds, then quit and install
-  // In your application, you don't need to wait 5 seconds.
-  // You could call autoUpdater.quitAndInstall(); immediately
-  setTimeout(function() {
-    autoUpdater.quitAndInstall();  
-  }, 5000)
-})
-
-app.on('ready', function()  {
-  autoUpdater.checkForUpdates();
-});
-
-// Update will be downloaded now but installed only on the next launch of the app
-// app.on('ready', function()  {
-//   autoUpdater.checkForUpdatesAndNotify()
-// });
+// autoUpdater.on('update-downloaded', (info) => {
+//   autoUpdater.quitAndInstall();  
+// })

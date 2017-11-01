@@ -35,24 +35,35 @@ If you can't use GitHub, you can use other providers:
    
         npm install
 
-4. Generate a GitHub access token by going to <https://github.com/settings/tokens/new>.  The access token should have the `repo`            scope/permission.  Once you have the token, assign it to an environment variable 
+4. Generate a GitHub access token by going to <https://github.com/settings/tokens/new>.  The access token should have the `repo` scope/permission.  Once you have the token, assign it to an environment variable 
 
-    (on macOS/linux):
+    On macOS/linux:
 
             export GH_TOKEN="<YOUR_TOKEN_HERE>"
 
-    (on Windows, run in powershell):
+    On Windows, run in powershell:
 
             [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
 
-    make sure to restart IDE/Terminal to inherit latest env variable.
+    Make sure to restart IDE/Terminal to inherit latest env variable.
 
-5. Publish with the `publish.sh` script:
+5. Publish for your platform with:
 
-        ./publish.sh
-    In case of Windows, directly run the command: ```node_modules/.bin/build --win -p always```
+        build -p always
+
+   or
+
+        npm run publish
+
+   If you want to publish for more platforms, edit the `publish` script in `package.json`.  For instance, to build for Windows and macOS:
+
+        ...
+        "scripts": {
+            "publish": "build --mac --win -p always"
+        },
+        ...
     
-6. Release the release on GitHub by going to <https://github.com/iffy/electron-updater-example/releases>, editing the release and           clicking "Publish release."
+6. Release the release on GitHub by going to <https://github.com/iffy/electron-updater-example/releases>, editing the release and clicking "Publish release."
 
 7. Download and install the app from <https://github.com/iffy/electron-updater-example/releases>.
 
