@@ -5,12 +5,12 @@
   "description": "electron-updater example project",
   "author": "Matt Haggard",
   "devDependencies": {
-    "electron": "^1.4.15",
-    "electron-builder": "^12.3.1"
+    "electron": "^1.7.9",
+    "electron-builder": "^19.43.3"
   },
   "dependencies": {
     "electron-log": "^1.3.0",
-    "electron-updater": "^1.4.2"
+    "electron-updater": "^2.15.0"
   },
   "build": {
     "appId": "com.github.iffy.electronupdaterexample",
