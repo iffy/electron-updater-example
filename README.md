@@ -50,7 +50,7 @@ If you can't use GitHub, you can use other providers:
 5. Publish with the `publish.sh` script:
 
         ./publish.sh
-    In case of Windows, directly run the command: node_modules/.bin/build --win -p always
+    In case of Windows, directly run the command: ```node_modules/.bin/build --win -p always```
     
 6. Release the release on GitHub by going to <https://github.com/iffy/electron-updater-example/releases>, editing the release and           clicking "Publish release."
 
