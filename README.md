@@ -39,11 +39,11 @@ If you can't use GitHub, you can use other providers:
 
     On macOS/linux:
 
-            export GH_TOKEN="<YOUR_TOKEN_HERE>"
+        export GH_TOKEN="<YOUR_TOKEN_HERE>"
 
     On Windows, run in powershell:
 
-            [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
+        [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
 
     Make sure to restart IDE/Terminal to inherit latest env variable.
 
