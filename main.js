@@ -132,3 +132,8 @@ autoUpdater.on('update-downloaded', (info) => {
 app.on('ready', function()  {
   autoUpdater.checkForUpdates();
 });
+
+// Update will be downloaded now but installed only on the next launch of the app
+// app.on('ready', function()  {
+//   autoUpdater.checkForUpdatesAndNotify()
+// });
