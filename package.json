@@ -5,7 +5,7 @@
   "description": "electron-updater example project",
   "author": "Matt Haggard",
   "scripts": {
-    "build-and-publish": "build --win -p onTagOrDraft"
+    "build-and-publish": "build --publish"
   },
   "devDependencies": {
     "electron": "^1.7.9",
