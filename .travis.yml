@@ -3,4 +3,4 @@ node_js:
   - "node"
 cache: yarn
 script:
-  - yarn build-and-publish
+  - yarn release

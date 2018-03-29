@@ -17,4 +17,4 @@ install:
 build: off
 
 test_script:	  
-  - yarn build-and-publish
+  - yarn release
