@@ -1,0 +1,20 @@
+# Test against the latest version of this Node.js version
+environment: 
+  nodejs_version: "8"
+  GH_TOKEN:
+    secure: nbVyel6kL1prlA5aIzDrssnrM1SA8Q9gycRoptlTiqLlU9q8TG2MpXiZIgkvfPMe
+
+cache:
+ - "%LOCALAPPDATA%\\Yarn"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - yarn
+
+build: off
+
+test_script:	  
+  - yarn release
