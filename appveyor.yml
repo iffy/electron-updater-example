@@ -12,6 +12,5 @@ install:
   # install modules
   - yarn
 
-build:
+test_script:	  
   - yarn build-and-publish
-  
