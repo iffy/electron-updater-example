@@ -12,5 +12,7 @@ install:
   # install modules
   - yarn
 
+build: off
+
 test_script:	  
   - yarn build-and-publish
