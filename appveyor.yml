@@ -1,13 +1,11 @@
 # Test against the latest version of this Node.js version
-environment:
+environment: 
   nodejs_version: "8"
+  GH_TOKEN:
+    secure: nbVyel6kL1prlA5aIzDrssnrM1SA8Q9gycRoptlTiqLlU9q8TG2MpXiZIgkvfPMe
 
 cache:
  - "%LOCALAPPDATA%\\Yarn"
-
-environment: 
-  GH_TOKEN:
-    secure: nbVyel6kL1prlA5aIzDrssnrM1SA8Q9gycRoptlTiqLlU9q8TG2MpXiZIgkvfPMe
 
 # Install scripts. (runs after repo cloning)
 install:
