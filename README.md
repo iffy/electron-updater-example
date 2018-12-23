@@ -63,9 +63,9 @@ If you can't use GitHub, you can use other providers:
         },
         ...
 
-6. Release the release on GitHub by going to <https://github.com/iffy/electron-updater-example/releases>, editing the release and clicking "Publish release."
+6. Release the release on GitHub by going to <https://github.com/<YOUR_GIT_HUB_USERNAME>/electron-updater-example/releases>, editing the release and clicking "Publish release."
 
-7. Download and install the app from <https://github.com/iffy/electron-updater-example/releases>.
+7. Download and install the app from <https://github.com/<YOUR_GIT_HUB_USERNAME>/electron-updater-example/releases>.
 
 8. Update the version in `package.json`, commit and push to GitHub.
 
