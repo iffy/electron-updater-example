@@ -1,5 +1,5 @@
 {
-  "name": "electron-updater-example",
+  "name": "electron-updater-congwen-ma",
   "version": "0.7.1",
   "main": "main.js",
   "description": "electron-updater example project",
@@ -16,7 +16,14 @@
     "electron-updater": "^4.0.6"
   },
   "build": {
-    "appId": "com.github.iffy.electronupdaterexample",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "congwenma",
+        "repo": "electron-updater-example"
+      }
+    ],
+    "appId": "com.github.congwenma.electronupdaterexample",
     "mac": {
       "category": "your.app.category.type",
       "target": [
