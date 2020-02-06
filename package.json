@@ -1,6 +1,6 @@
 {
   "name": "electron-updater-congwen-ma",
-  "version": "0.7.10",
+  "version": "0.7.11",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "Matt Haggard",
@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "electron": "^3.0.2",
-    "electron-builder": "^20.28.4"
+    "electron-builder": "^22.3.2"
   },
   "dependencies": {
     "electron-log": "^1.3.0",
