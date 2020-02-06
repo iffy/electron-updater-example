@@ -1,0 +1,9 @@
+name: 'PR Initial Commenter'
+description: 'Adds the ticket and the sample url'
+inputs:
+  repo-token:
+    description: 'Token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
