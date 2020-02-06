@@ -1,3 +1,9 @@
+
+# Created by https://www.gitignore.io/api/tpush
+# Edit at https://www.gitignore.io/?templates=tpush
+
+#!! ERROR: tpush is undefined. Use list command to see defined gitignore types !!#
+
+# End of https://www.gitignore.io/api/tpush
 node_modules
-dist/
-yarn.lock
+dist

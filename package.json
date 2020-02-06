@@ -1,11 +1,11 @@
 {
   "name": "electron-updater-congwen-ma",
-  "version": "0.7.1",
+  "version": "0.7.5",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "Matt Haggard",
   "scripts": {
-    "publish": "build -p always"
+    "publish": "build --mac --win -p always"
   },
   "devDependencies": {
     "electron": "^3.0.2",
@@ -24,6 +24,9 @@
       }
     ],
     "appId": "com.github.congwenma.electronupdaterexample",
+    "nsis": {
+      "perMachine": true
+    },
     "mac": {
       "category": "your.app.category.type",
       "target": [
