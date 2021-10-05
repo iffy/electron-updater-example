@@ -1,28 +1,52 @@
 {
   "name": "electron-updater-example",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "Matt Haggard",
   "scripts": {
-    "publish": "build -p always"
+    "publish": "electron-builder -p always",
+    "publish-linux-docker": "./build/linuxInstallers.sh"
   },
   "devDependencies": {
-    "electron": "^3.0.2",
-    "electron-builder": "^20.28.4"
+    "electron": "^14.0.1",
+    "electron-builder": "^22.11.7"
   },
   "dependencies": {
-    "electron-log": "^1.3.0",
-    "electron-updater": "^4.0.6"
+    "electron-log": "^4.4.1",
+    "electron-updater": "^4.3.9"
   },
   "build": {
     "appId": "com.github.iffy.electronupdaterexample",
+    "productName": "Electron Updater Example",
+    "afterSign": "./build.notarize.js",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "!.DS_Store"
+    ],
     "mac": {
       "category": "your.app.category.type",
-      "target": [
-        "zip",
-        "dmg"
-      ]
+      "target": "default",
+      "type": "distribution",
+      "hardenedRuntime": true,
+      "gatekeeperAsses": false,
+      "entitlements": "./build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "sign": false
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "category": "your.app.category.type",
+      "target": "AppImage"
     }
   }
 }

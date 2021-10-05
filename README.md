@@ -9,7 +9,13 @@ If you can't use GitHub, you can use other providers:
 
 1. For macOS, you will need a code-signing certificate.
 
-    Install Xcode (from the App Store), then follow [these instructions](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW6) to make sure you have a "Mac Developer" certificate.  If you'd like to export the certificate (for automated building, for instance) [you can](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW7).  You would then follow [these instructions](https://www.electron.build/code-signing).
+    Install Xcode (from the App Store), then follow [these instructions](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW6) to make sure you have a "Developer ID Application" certificate.  If you'd like to export the certificate (for automated building, for instance) [you can](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html#//apple_ref/doc/uid/TP40012582-CH31-SW7).  You would then follow [these instructions](https://www.electron.build/code-signing).
+   
+    This example application is set up to perform code-signing and notarization on Mac OS provided that a `Developer ID
+    Application` certificate is installed in the default keychain.  The following environment variables are important for the signing process:
+    - `CSC_IDENTITY_AUTO_DISCOVERY` - controls whether `electron-builder` tries to sign the application; default is `true`, set to `false` to skip signing
+    - `APPLEID` - the Apple ID to use for notarization (required for signing).
+    - `APPLEIDPASS` - the password to use with the specified Apple ID for notarization (required for signing).  Apple recommends setting up an app-specific password to safeguard the Apple ID password (see [Apple Support](https://support.apple.com/en-us/HT204397)) for more information.
 
 2. Adjust `package.json` if needed.
 
@@ -49,7 +55,7 @@ If you can't use GitHub, you can use other providers:
 
 5. Publish for your platform with:
 
-        build -p always
+        electron-builder -p always
 
    or
 
@@ -63,12 +69,16 @@ If you can't use GitHub, you can use other providers:
         },
         ...
 
-6. Release the release on GitHub by going to <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>, editing the release and clicking "Publish release."
+   NOTE: The Mac OS signing/notarization process must be run on Mac OS.  This application is set up to build Linux installers using the `electronuserland/builder` Docker image.  Run:
+   
+        npm run publish-linux-docker
 
-7. Download and install the app from <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>.
+7. Release the release on GitHub by going to <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>, editing the release and clicking "Publish release."
 
-8. Update the version in `package.json`, commit and push to GitHub.
+8. Download and install the app from <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>.
 
-9. Do steps 5 and 6 again.
+9. Update the version in `package.json`, commit and push to GitHub.
 
-10. Open the installed version of the app and see that it updates itself.
+10. Do steps 5 and 6 again.
+
+11. Open the installed version of the app and see that it updates itself.
