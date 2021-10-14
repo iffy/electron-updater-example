@@ -69,16 +69,14 @@ If you can't use GitHub, you can use other providers:
         },
         ...
 
-   NOTE: The Mac OS signing/notarization process must be run on Mac OS.  This application is set up to build Linux installers using the `electronuserland/builder` Docker image.  Run:
-   
-        npm run publish-linux-docker
+   NOTE: The Mac OS signing/notarization process must be run on Mac OS.
 
-7. Release the release on GitHub by going to <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>, editing the release and clicking "Publish release."
+6. Release the release on GitHub by going to <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>, editing the release and clicking "Publish release."
 
-8. Download and install the app from <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>.
+7. Download and install the app from <https://github.com/YOUR_GIT_HUB_USERNAME/electron-updater-example/releases>.
 
-9. Update the version in `package.json`, commit and push to GitHub.
+8. Update the version in `package.json`, commit and push to GitHub.
 
-10. Do steps 5 and 6 again.
+9. Do steps 5 and 6 again.
 
-11. Open the installed version of the app and see that it updates itself.
+10. Open the installed version of the app and see that it updates itself.

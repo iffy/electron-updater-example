@@ -10,7 +10,8 @@
   },
   "devDependencies": {
     "electron": "^14.0.1",
-    "electron-builder": "^22.11.7"
+    "electron-builder": "^22.11.7",
+    "js-yaml": "^4.1.0"
   },
   "dependencies": {
     "electron-log": "^4.4.1",
