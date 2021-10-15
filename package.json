@@ -1,17 +1,16 @@
 {
   "name": "electron-updater-example",
-  "version": "0.7.2",
+  "version": "0.8.1",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "Matt Haggard",
   "scripts": {
-    "publish": "electron-builder -p always",
-    "publish-linux-docker": "./build/linuxInstallers.sh"
+    "publish": "electron-builder -p always"
   },
   "devDependencies": {
     "electron": "^14.0.1",
     "electron-builder": "^22.11.7",
-    "js-yaml": "^4.1.0"
+    "electron-notarize": "^1.1.1"
   },
   "dependencies": {
     "electron-log": "^4.4.1",
@@ -19,31 +18,15 @@
   },
   "build": {
     "appId": "com.github.iffy.electronupdaterexample",
-    "productName": "Electron Updater Example",
-    "afterSign": "./build.notarize.js",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "!.DS_Store"
-    ],
+    "afterSign": "./build/notarize.js",
     "mac": {
-      "category": "your.app.category.type",
-      "target": "default",
-      "type": "distribution",
-      "hardenedRuntime": true,
-      "gatekeeperAsses": false,
-      "entitlements": "./build/entitlements.mac.plist"
-    },
-    "dmg": {
-      "sign": false
+      "category": "your.app.category.type"
     },
     "win": {
       "target": "nsis"
     },
     "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "oneClick": false
     },
     "linux": {
       "category": "your.app.category.type",

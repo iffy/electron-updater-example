@@ -5,7 +5,7 @@ If you can't use GitHub, you can use other providers:
 - [Complete electron-updater HTTP example](https://gist.github.com/iffy/0ff845e8e3f59dbe7eaf2bf24443f104)
 - [Complete electron-updater from gitlab.com private repo example](https://gist.github.com/Slauta/5b2bcf9fa1f6f6a9443aa6b447bcae05)
 
-**NOTE:** If you want to run through this whole process, you will need to fork this repo on GitHub and replace all instances of `iffy` with your GitHub username before doing the following steps.
+**NOTE:** If you want to run through this whole process, either fork this repo or [start your own from a template](https://github.com/iffy/electron-updater-example/generate). Then replace all instances of `iffy` with your GitHub username before doing the following steps.
 
 1. For macOS, you will need a code-signing certificate.
 
@@ -13,9 +13,16 @@ If you can't use GitHub, you can use other providers:
    
     This example application is set up to perform code-signing and notarization on Mac OS provided that a `Developer ID
     Application` certificate is installed in the default keychain.  The following environment variables are important for the signing process:
+
     - `CSC_IDENTITY_AUTO_DISCOVERY` - controls whether `electron-builder` tries to sign the application; default is `true`, set to `false` to skip signing
-    - `APPLEID` - the Apple ID to use for notarization (required for signing).
-    - `APPLEIDPASS` - the password to use with the specified Apple ID for notarization (required for signing).  Apple recommends setting up an app-specific password to safeguard the Apple ID password (see [Apple Support](https://support.apple.com/en-us/HT204397)) for more information.
+    - `APPLE_ID` - the Apple ID to use for notarization (required for signing).
+    - `APPLE_ID_PASSWORD` - the password to use with the specified Apple ID for notarization (required for signing).  Apple recommends setting up an app-specific password to safeguard the Apple ID password (see [Apple Support](https://support.apple.com/en-us/HT204397)) for more information.
+
+    To enable code-signing and notarization:
+
+        export CSC_IDENTITY_AUTO_DISCOVERY="true"
+        export APPLE_ID="<your Apple ID>"
+        export APPLE_ID_PASSWORD="<your Apple Password>"
 
 2. Adjust `package.json` if needed.
 
@@ -51,7 +58,7 @@ If you can't use GitHub, you can use other providers:
 
         [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
 
-    Make sure to restart IDE/Terminal to inherit latest env variable.
+    Make sure to restart your IDE/Terminal to inherit latest env variable.
 
 5. Publish for your platform with:
 
@@ -65,7 +72,7 @@ If you can't use GitHub, you can use other providers:
 
         ...
         "scripts": {
-            "publish": "build --mac --win -p always"
+            "publish": "electron-builder --mac --win -p always"
         },
         ...
 
